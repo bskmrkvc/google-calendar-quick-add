@@ -10,11 +10,13 @@
 <body>
   <h2>Create Calendar Event</h2>
   <form id="event-form">
-    <input type="text" id="summary" placeholder="Event Title" required />
-    <input type="datetime-local" id="start" required />
-    <input type="datetime-local" id="end" required />
+    <input type="text" id="summary" placeholder="Event Summary" />
+    <input type="text" id="description" placeholder="Event Description" />
+    <input type="datetime-local" id="start" />
+    <input type="datetime-local" id="end" />
     <button type="submit">Add Event</button>
   </form>
+  <p id="status"></p>
   <script src="popup.js"></script>
 </body>
 </html>
