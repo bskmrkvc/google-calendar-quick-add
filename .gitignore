@@ -2,3 +2,5 @@ node_modules/
 google-auth/token.json
 .env
 .DS_Store
+config/token.json
+config/credentials.json
