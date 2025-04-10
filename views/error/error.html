@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Authorization Error</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8d7da;
+      color: #721c24;
+      margin: 0;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .box {
+      background: #f5c6cb;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    button {
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      background-color: #721c24;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #a94442;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h1>Authorization Failed</h1>
+    <p>There was an issue during the sign-in process. Please try again.</p>
+    <button onclick="window.close()">Close</button>
+  </div>
+</body>
+</html>
