@@ -26,9 +26,9 @@ function createOAuthWindow() {
     win.loadURL('http://localhost:3000/success');
     win.webContents.on('did-navigate', (_, url) => {
       if (url.includes('success')) 
-        win.loadFile('views/event-scheduler/scheduler.html');
+        win.loadFile('src/views/event-scheduler/scheduler.html');
       if (url.includes('error')) {
-        win.loadFile('views/error/error.html');
+        win.loadFile('src/views/error/error.html');
       }
     });
   } 
@@ -39,10 +39,10 @@ function createOAuthWindow() {
       if (match) 
         handleOAuthCode(decodeURIComponent(match[1])); // Handle the OAuth code
       if (url.includes('error')) {
-        win.loadFile('views/error/error.html');
+        win.loadFile('src/views/error/error.html');
       }
       if (url.includes('success')) 
-        win.loadFile('views/event-scheduler/scheduler.html');
+        win.loadFile('src/views/event-scheduler/scheduler.html');
     });
   }
 
