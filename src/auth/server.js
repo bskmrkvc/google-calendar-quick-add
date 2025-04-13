@@ -4,6 +4,8 @@ const { google } = require('googleapis');
 const { handleOAuthCode } = require('./oauth-handler');
 const credentials = require('../../config/credentials.json');
 
+const SUCCESS_URL = process.env.SUCCESS_URL;
+
 /// Create an Express server to handle OAuth redirection and authentication with GCalendar API.
 function createOAuthServer() {
   const app = express();
@@ -22,7 +24,7 @@ function createOAuthServer() {
     const code = req.query.code;
     if (code) {
       handleOAuthCode(code);
-      res.redirect('http://localhost:3000/success');
+      res.redirect(SUCCESS_URL);
     } else {
       res.send('No code found in query.');
     }

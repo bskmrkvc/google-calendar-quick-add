@@ -3,7 +3,7 @@ const path = require('path');
 const { google } = require('googleapis');
 const credentials = require('../../config/credentials.json');
 
-const TOKEN_PATH = path.join(__dirname, '../../config/token.json'); // Path to the token file
+const TOKEN_PATH = process.env.TOKEN_PATH; 
 let oauth2Client;
 
 // // Load client secrets from a local file. 

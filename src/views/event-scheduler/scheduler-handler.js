@@ -1,3 +1,18 @@
+// Creating date/time pickers
+flatpickr("#start", {
+  enableTime: true,
+  dateFormat: "d. M Y H:i",
+  time_24hr: true,
+  defaultDate: new Date()
+});
+
+flatpickr("#end", {
+  enableTime: true,
+  dateFormat: "d. M Y H:i",
+  time_24hr: true,
+  defaultDate: new Date(new Date().getTime() + 60 * 60 * 1000) // 1 hour later
+});
+
 document.getElementById('event-form').addEventListener('submit', (e) => {
   e.preventDefault();
 
@@ -19,8 +34,8 @@ document.getElementById('event-form').addEventListener('submit', (e) => {
 
   const summary = sanitizeInput(document.getElementById('summary').value);
   const description = sanitizeInput(document.getElementById('description').value);
-  const start = formatDateTime(document.getElementById('start').value);
-  const end = formatDateTime(document.getElementById('end').value);
+  const start = sanitizeInput(document.getElementById('start').value);
+  const end = sanitizeInput(document.getElementById('end').value);
 
   // Validate inputs
   if (!summary || !start || !end) {
@@ -63,3 +78,5 @@ function formatDateTime(dateTime) {
     return null;
   return date.toISOString().slice(0, 16);
 }
+
+

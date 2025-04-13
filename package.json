@@ -14,7 +14,9 @@
     "electron": "^35.1.4"
   },
   "dependencies": {
+    "dotenv": "^16.5.0",
     "express": "^5.1.0",
+    "flatpickr": "^4.6.13",
     "googleapis": "^148.0.0"
   }
 }

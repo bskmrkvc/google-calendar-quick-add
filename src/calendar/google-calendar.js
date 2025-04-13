@@ -2,8 +2,8 @@ const fs = require('fs');
 const path = require('path');
 const { google } = require('googleapis');
 
-const CREDENTIALS_PATH = path.join(__dirname, '../../config/credentials.json');
-const TOKEN_PATH = path.join(__dirname, '../../config/token.json');
+const CREDENTIALS_PATH = process.env.CREDENTIALS_PATH; 
+const TOKEN_PATH = process.env.TOKEN_PATH; 
 
 // Load client secrets from a local file.
 function loadCredentials() {
@@ -45,11 +45,11 @@ function addEvent(eventData) {
         summary: eventData.summary,
         description: eventData.description,
         start: {
-          dateTime: eventData.start + ':00', // Add seconds for ISO standard
+          dateTime: formatDateTime(eventData.start),
           timeZone: 'Europe/Belgrade',
         },
         end: {
-          dateTime: eventData.end + ':00', // Add seconds for ISO standard
+          dateTime: formatDateTime(eventData.end),
           timeZone: 'Europe/Belgrade',
         },
       };
@@ -64,6 +64,27 @@ function addEvent(eventData) {
       );
     });
   });
+}
+
+/// Format the date and time string to ISO format (YYYY-MM-DDTHH:MM:SS) without seconds.
+function formatDateTime(dateTimeString) {
+  if (!dateTimeString) return null;
+
+  const match = dateTimeString.match(/^(\d{1,2})\.\s([A-Za-z]{3})\s(\d{4})\s(\d{2}):(\d{2})$/);
+  if (!match) return null;
+
+  const [_, day, monthStr, year, hour, minute] = match;
+
+  const monthMap = {
+    Jan: 0, Feb: 1, Mar: 2, Apr: 3, May: 4, Jun: 5,
+    Jul: 6, Aug: 7, Sep: 8, Oct: 9, Nov: 10, Dec: 11
+  };
+
+  const month = monthMap[monthStr];
+  if (month === undefined) return null;
+
+  const date = new Date(Date.UTC(year, month, day, hour, minute));
+  return date.toISOString(); 
 }
 
 module.exports = { addEvent };
