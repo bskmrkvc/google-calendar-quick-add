@@ -12,7 +12,7 @@ function createOAuthWindow() {
   win = new BrowserWindow({
     width: 800,
     height: 600,
-    show: false,
+    frame: false,
     webPreferences: {
       contextIsolation: true,
       nodeIntegration: false,
@@ -46,6 +46,20 @@ function createOAuthWindow() {
     });
   }
 
+  // Handle custom window controls
+  const { ipcMain } = require('electron');
+  ipcMain.on('window-control', (event, action) => {
+    console.log(`Received window-control action: ${action}`); // Debug log
+    switch (action) {
+      case 'minimize':
+        win.minimize();
+        break;
+      case 'close':
+        win.close();
+        break;
+    }
+  });
+
   // Hide the window when it is closed
   win.on('close', e => {
     e.preventDefault();
@@ -55,4 +69,9 @@ function createOAuthWindow() {
   win.show();
 }
 
-module.exports = { createOAuthWindow };
+// Export the `win` instance
+function getWindow() {
+  return win;
+}
+
+module.exports = { createOAuthWindow, getWindow };
