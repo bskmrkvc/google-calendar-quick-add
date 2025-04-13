@@ -27,7 +27,8 @@ ipcMain.on('minimize-window', () => {
 });
 
 ipcMain.on('close-window', () => {
-  const mainWindow = getWindow(); 
+  const mainWindow = getWindow();
+  if (mainWindow) {
     mainWindow.close();
   }
 });

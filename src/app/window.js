@@ -13,6 +13,7 @@ function createOAuthWindow() {
     width: 800,
     height: 600,
     frame: false,
+    transparent: true,
     webPreferences: {
       contextIsolation: true,
       nodeIntegration: false,
