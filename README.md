@@ -1,15 +1,13 @@
 # Google Calendar Quick Add
 
-Google Calendar Quick Add is an Electron-based desktop application that allows users to quickly add events to their Google Calendar. The app provides a modern and user-friendly interface for scheduling events, with features like date and time pickers, input validation, and integration with the Google Calendar API.
+Google Calendar Quick Add is an Electron-based desktop application that allows users to quickly add events to their Google Calendar. The app provides a simple interface for scheduling events with the Google Calendar API.
 
 ## Features
 
 - Add events to your Google Calendar with a simple and intuitive interface.
-- Modern design with a black/gray gradient theme and white text.
-- Date and time pickers powered by Flatpickr for a sleek user experience.
-- Input validation and sanitization to ensure data integrity.
+- Date and time pickers powered by Flatpickr.
 - OAuth2 authentication with Google for secure access to your calendar.
-- Global shortcut (`Ctrl+Shift+G`) to open the app quickly.
+- Global shortcut (`Command/Ctrl+Shift+G`) to open the app quickly.
 - Tray menu for easy access to the app.
 
 ## Technologies Used
@@ -18,8 +16,6 @@ Google Calendar Quick Add is an Electron-based desktop application that allows u
 - **Google Calendar API**: For interacting with the user's Google Calendar.
 - **Flatpickr**: For modern date and time pickers.
 - **Express**: For handling OAuth2 redirection.
-- **dotenv**: For managing environment variables.
-- **Node.js**: For backend logic and API integration.
 
 ## Setup Instructions
 
